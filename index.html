@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>全国城市天气预报</title>
+    <link rel="stylesheet" type="text/css" href="css/reset.css">
+    <link rel="stylesheet" href="css/index.css">
+    <style type="text/css">
+        .tab{
+            width: 1200px;
+            height: 500px;
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            margin-left: -600px;
+            margin-top: -250px;
+            overflow: hidden;
+            color: rgba(255,255,255,0.8);
+        }
+        .tab_head {
+            width: 100px;
+            height: 240px;
+            position: fixed;
+            left: -100px;
+            top: 50%;
+            margin-top: -120px;
+            z-index: 9
+        }
+        .Tomorrow{
+            width: 1000px;
+            height: 310px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-left: -500px;
+            margin-top: -180px;
+        }
+    </style>
+</head>
+<body>
+<!-- 背景开始 -->
+<video autoplay loop muted>
+    <source src="video/a0.mp4" type="" >
+</video>
+<!-- 背景结束 -->
+<!-- 头部开始 -->
+<div class="header">
+    <div class="container clearfix">
+        <div class="header_logo fl">全国城市天气预报</div>
+        <div class="nav fl">
+            <ul class="clearfix">
+                <li><a href="javascript:;">首页</a></li>
+                <li class="active"><a href="javascript:;">今日天气</a></li>
+                <li><a href="javascript:;">更多天气</a></li>
+                <li><a href="javascript:;">新闻资讯</a></li>
+                <li><a href="javascript:;">联系我们</a></li>
+            </ul>
+        </div>
+         <div class="search clearfix fr">
+            <span class="location"><a href="map.html" target="_blank">青岛</a></span>
+            <input type="text" placeholder="请输入地区" value="青岛" id="txt">
+            <button id="btn" onclick="seach()">切换</button>
+        </div>
+    </div>
+</div>
+<!-- 头部结束 -->
+<!-- 伸缩菜单开始 --> 
+<div class="tab_head" id="div1">
+    <div class="active">今天天气</div>
+    <div>未来三天</div>
+    <div>空气质量</div>
+    <div>温馨提示</div>
+    <span>展开</span>
+</div>
+<!-- 伸缩菜单结束 --> 
+<!-- 天气区域开始 -->
+<div class="tab container clearfix">
+    <ul class="clearfix">
+        <li class="show">
+            <div class="today">
+                <div class="today_left">
+                    <h1><span class="location">青岛</span>今日天气
+                        <span class="tb_end">[刚刚更新]</span>
+                    </h1>
+                    <div class="td clearfix">
+                        <div id="data" class="fl"></div>
+                        <div id="time" class="fl"></div>
+                    </div>
+                    <div class="weather">
+                        <span class="tmp"></span>℃
+                        <img src="img/1.png" id="img1">         
+                    </div>     
+                                
+                    <div class="weather">
+                        <span class="tmp_min"></span> ~
+                        <span class="tmp_max"></span>℃
+                    </div>
+                    <p>天气：<span class="cond_txt1"></span></p>
+                    <p>空气质量：<span class="qlty"></span></p>
+                    <p>风向：<span class="wind_dir"></span></p>
+                    <p>风力：<span class="wind_sc"></span>级</p>
+                    <h4>温馨提示</h4>
+                    <p><span class="brf">白天天气虽然晴好，但天气凉，您会感觉很冷，不舒适，请注意保暖防寒。</span></p>
+                </div>
+                <div class="today_right">
+                    <div>
+                        <p>运动指数</p>
+                        <span class="drsg"></span>
+                    </div>
+                    <div>
+                        <p>洗车指数</p>
+                        <span class="flu"></span>
+                    </div>
+                    
+                    <div>
+                        <p>穿衣指数</p>
+                        <span class="sport"></span>
+                    </div>
+                    <div>
+                        <p>钓鱼指数</p>
+                        <span class="trav"></span>
+                    </div>
+                    <div>
+                        <p>防晒指数</p>
+                        <span class="spi"></span>
+                    </div>
+                    <div>
+                        <p>旅游指数</p>
+                        <span class="cw"></span>
+                    </div>                    
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="Tomorrow clearfix">
+                <div class="Tomorrow_today">
+                    <h1>今天</h1>
+                    <p class="data1"></p>
+                    <img src="">
+                    <div class="Tomorrow_weather">
+                        <span class="situation">阴</span>&nbsp;&nbsp;&nbsp;
+                        <span class="degrees"></span>
+                    </div>
+                    <div class="wind"></div>
+                    <div class="humidity"></div>
+                </div>
+                <div class="Tomorrow_today">
+                    <h1><span></span>明天</h1>
+                    <p class="data1"></p>
+                    <img src="">
+                    <div class="Tomorrow_weather">
+                        <span class="situation">阴</span>&nbsp;&nbsp;&nbsp;
+                        <span class="degrees"></span>
+                    </div>
+                    <div class="wind"></div>
+                    <div class="humidity"></div>
+                </div>
+                <div class="Tomorrow_today">
+                    <h1><span></span>后天</h1>
+                    <p class="data1"></p>
+                    <img src="">
+                    <div class="Tomorrow_weather">
+                        <span class="situation">阴</span>&nbsp;&nbsp;&nbsp;
+                        <span class="degrees"></span>
+                    </div>
+                    <div class="wind"></div>
+                    <div class="humidity"></div>
+                </div>
+            </div>
+        </li>
+        <li><h1 style="text-align: center;font-size: 50px">空气质量空气质量空气质量空气质量空气质量空气质量空气质量空气质量空气质量</h1></li>
+        <li><h1 style="text-align: center;font-size: 50px">温馨提示温馨提示温馨提示温馨提示温馨提示温馨提示温馨提示温馨提示温馨提示</h1></li>
+    </ul>
+</div>
+<!-- 底部开始 -->
+<div class="footer">
+    Design by：
+    <a href="http://www.lixianliang.top" target="_blank">李先亮</a>&nbsp;&nbsp;&nbsp;版权所有，违者必究 备案号：
+    <a href="http://www.beian.miit.gov.cn/" target="_blank">鲁ICP备20000563号</a> &nbsp;&nbsp;&nbsp;数据来源：
+    <a href="https://www.heweather.com/" target="_blank">和风天气</a>
+</div>
+<!-- 底部结束 -->
+</body>
+</html>
+<script src="js/ajax.js"></script>
+<script src="js/today.js"></script>
